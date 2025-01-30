@@ -5,6 +5,7 @@ public enum URL {
     GUINNESS_LOGIN("https://www.guinnessworldrecords.com/account/login"),
     AUTO_PRACTICE("http://www.automationpractice.pl/index.php"),
     GUINNESS_SEARCH("https://www.guinnessworldrecords.com/search?term=%2A"),
+    ANDERSEN_MAIN_PAGE("https://andersenlab.com/"),
     AUTO_PRACTICE_BOX("http://www.automationpractice.pl/index.php?id_category=3&controller=category");
     private String url;
 

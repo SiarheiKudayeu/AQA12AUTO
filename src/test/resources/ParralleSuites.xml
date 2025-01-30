@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="AllTests Suite" parallel = "tests" thread-count="2">
+    <test name="AllTests">
+        <classes>
+            <class name="lesson3.parallel.suite.ParallelSuitesTest"/>
+            <class name="lesson3.parallel.suite.ParallelSuitesTwoTest"/>
+        </classes>
+    </test>
+    <test name="AllTests2">
+        <classes>
+            <class name="lesson3.parallel.suite.ParallelSuitesThreeTest"/>
+            <class name="lesson3.parallel.suite.ParallelSuitesFourTest"/>
+        </classes>
+    </test>
+</suite>

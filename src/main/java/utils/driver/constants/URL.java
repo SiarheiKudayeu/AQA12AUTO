@@ -6,7 +6,9 @@ public enum URL {
     AUTO_PRACTICE("http://www.automationpractice.pl/index.php"),
     GUINNESS_SEARCH("https://www.guinnessworldrecords.com/search?term=%2A"),
     ANDERSEN_MAIN_PAGE("https://andersenlab.com/"),
-    AUTO_PRACTICE_BOX("http://www.automationpractice.pl/index.php?id_category=3&controller=category");
+    AUTO_PRACTICE_BOX("http://www.automationpractice.pl/index.php?id_category=3&controller=category"),
+    DRAG_PRACTICE("https://www.signesduquotidien.org/"),
+    CONTEXT_AND_DOUBLE("https://demo.guru99.com/test/simple_context_menu.html");
     private String url;
 
     public String getUrl() {

@@ -1,6 +1,6 @@
 package lesson3.base;
 
-import org.checkerframework.checker.units.qual.A;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;

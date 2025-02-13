@@ -52,9 +52,12 @@ public class ClassActionsExample {
     public static void openStack(Stack stack) {
         By locator = null;
         switch (stack) {
-            case PHP -> locator = Locators.phpOption;
-            case JAVA -> locator = Locators.javaOption;
-            case RUST -> locator = Locators.rustOption;
+            case PHP: locator = Locators.phpOption;
+            break;
+            case JAVA : locator = Locators.javaOption;
+            break;
+            case RUST : locator = Locators.rustOption;
+            break;
         }
 
         driver.get(URL.ANDERSEN_MAIN_PAGE.getUrl());

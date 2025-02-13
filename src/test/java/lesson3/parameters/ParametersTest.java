@@ -23,21 +23,23 @@ public class ParametersTest {
     @Parameters({"browser"})
     public void driverSetUp(String browser) {
         switch (browser) {
-            case "Edge" -> {
+            case "Edge": {
                 WebDriverManager.edgedriver().setup();
                 driver = new EdgeDriver();
                 driver.manage().window().maximize();
                 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                 driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
                 driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(10));
+                break;
             }
-            case "Chrome" -> {
+            case "Chrome": {
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
                 driver.manage().window().maximize();
                 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                 driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
                 driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(10));
+                break;
             }
         }
 

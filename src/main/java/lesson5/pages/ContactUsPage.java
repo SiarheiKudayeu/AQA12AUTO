@@ -1,5 +1,6 @@
 package lesson5.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,11 +8,14 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 
 import java.time.Duration;
 
 public class ContactUsPage {
+    static final Logger logger = LoggerFactory.getLogger(ContactUsPage.class);
 
     private WebDriver driver;
     private WebDriverWait wait;
@@ -43,61 +47,73 @@ public class ContactUsPage {
     @FindBy(xpath = "//*[@class='alert alert-success']")
     private static WebElement successMessage;
 
-
-    public ContactUsPage openContactUsPage(){
+    @Step("openContactUsPage")
+    public ContactUsPage openContactUsPage() {
         driver.get("http://www.automationpractice.pl/index.php?controller=contact");
         return this;
     }
 
-    public enum SubjectHeading{
+    public enum SubjectHeading {
         SERVICE, WEBMASTER
     }
 
-    public ContactUsPage selectHeading(SubjectHeading heading){
+    @Step("selectHeading")
+    public ContactUsPage selectHeading(SubjectHeading heading) {
         wait.until(ExpectedConditions.visibilityOf(emailAddress));
+        logger.info("Selecting value from Heading");
         Select select = new Select(selectLocator);
-        switch (heading){
-            case SERVICE -> select.selectByVisibleText("Customer service");
-            case WEBMASTER -> select.selectByVisibleText("Webmaster");
+        switch (heading) {
+            case SERVICE:
+                select.selectByVisibleText("Customer service");
+                break;
+            case WEBMASTER :
+                select.selectByVisibleText("Webmaster");
+                break;
         }
         return this;
     }
-
-    public ContactUsPage setEmail(String email){
+    @Step("setEmail")
+    public ContactUsPage setEmail(String email) {
+        logger.info("setting up email");
         emailAddress.sendKeys(email);
         return this;
     }
-
-    public ContactUsPage setOrderReference(int reference){
+    @Step("setOrderReference")
+    public ContactUsPage setOrderReference(int reference) {
+        logger.info("setting up order reference");
         orderReference.sendKeys(String.valueOf(reference));
         return this;
     }
-
-    public ContactUsPage setMessage(String message1){
+    @Step("setMessage")
+    public ContactUsPage setMessage(String message1) {
+        logger.info("setting up order message");
         message.sendKeys(String.valueOf(message1));
         return this;
     }
-
-    public ContactUsPage clickSendButton(){
+    @Step("clickSendButton")
+    public ContactUsPage clickSendButton() {
+        logger.info("click send button");
         submitButton.click();
         return this;
     }
-
-    public ContactUsPage checkSuccessMessage(){
+    @Step("checkSuccessMessage")
+    public ContactUsPage checkSuccessMessage() {
         Assert.assertEquals(getSuccessMessage(), "Your message has been successfully sent to our team.");
         return this;
     }
 
-    public ContactUsPage checkAlertMessage(){
+    @Step("checkAlertMessage")
+    public ContactUsPage checkAlertMessage() {
         Assert.assertEquals(getAlertMessage(), "The message cannot be blank.");
         return this;
     }
-
-    public String getSuccessMessage(){
+    @Step("getSuccessMessage")
+    public String getSuccessMessage() {
         return wait.until(ExpectedConditions.visibilityOf(successMessage)).getText();
     }
 
-    public String getAlertMessage(){
+    @Step("getAlertMessage")
+    public String getAlertMessage() {
         return wait.until(ExpectedConditions.visibilityOf(alertMessage)).getText();
     }
 }

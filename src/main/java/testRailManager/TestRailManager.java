@@ -51,8 +51,19 @@ public class TestRailManager {
         myTestRail.results().addForCase(run.getId(), 11, new Result().setStatusId(4), resultFieldList).execute();
         myTestRail.results().addForCase(run.getId(), 12, new Result().setStatusId(5), resultFieldList).execute();
 
-        //закрыть тест ран
+        //закрыть тест ран co suite
         myTestRail.runs().close(run.getId()).execute();
+
+        //создание тест рана
+        Run run2 = myTestRail.runs().add(1, new Run().setName("AQA TEST RUN2").setSuiteId(1)).execute();
+        //1- passed, 2 - blocked, 4 - retest, 5 - failed;
+        myTestRail.results().addForCase(run2.getId(), 5, new Result().setStatusId(1), resultFieldList).execute();
+        myTestRail.results().addForCase(run2.getId(), 6, new Result().setStatusId(2), resultFieldList).execute();
+        myTestRail.results().addForCase(run2.getId(), 7, new Result().setStatusId(4), resultFieldList).execute();
+        myTestRail.results().addForCase(run2.getId(), 8, new Result().setStatusId(5), resultFieldList).execute();
+
+        //закрыть тест ран
+        myTestRail.runs().close(run2.getId()).execute();
     }
 
 }
